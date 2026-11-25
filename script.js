@@ -15,3 +15,68 @@ sheet.addEventListener('click', (event) => {
 mobile.addEventListener('change', () => {
   if (!mobile.matches && sheet.open) sheet.close();
 });
+
+const art = document.getElementById('heroArt');
+const rotation = document.getElementById('heroRotation');
+const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
+const slides = [...art.querySelectorAll('img')];
+const artwork = [
+  { src: slides[0].getAttribute('src'), alt: slides[0].alt },
+  { src: './assets/birthday-dress.png', alt: '青いドレスでグラスを掲げる愛神アプロ' },
+  { src: './assets/birthday-dress-smile.png', alt: '青いドレスで微笑む愛神アプロ' },
+  { src: './assets/center-part.png', alt: 'センターパートの愛神アプロの立ち絵' },
+];
+
+let current = artwork[0];
+let active = slides[0];
+let remaining = [];
+let timer;
+let paused = false;
+let loading = false;
+
+function canRotate() {
+  return !paused && !motion.matches && !document.hidden;
+}
+
+async function changeArtwork() {
+  if (!canRotate() || loading) return;
+  if (remaining.length === 0) remaining = artwork.filter(item => item !== current);
+  const index = Math.floor(Math.random() * remaining.length);
+  const [next] = remaining.splice(index, 1);
+  const incoming = slides.find(slide => slide !== active);
+  loading = true;
+  try {
+    incoming.src = next.src;
+    await incoming.decode();
+    if (!canRotate()) return;
+
+    incoming.alt = next.alt;
+    incoming.removeAttribute('aria-hidden');
+    incoming.classList.add('is-visible');
+    active.classList.remove('is-visible');
+    active.setAttribute('aria-hidden', 'true');
+    active = incoming;
+    current = next;
+  } catch {
+    // Keep showing the current image if an asset fails to load.
+  } finally {
+    loading = false;
+  }
+}
+
+function updateRotation() {
+  clearInterval(timer);
+  rotation.hidden = motion.matches;
+  rotation.textContent = paused ? '自動切替を再開' : '自動切替を停止';
+  if (canRotate()) timer = setInterval(changeArtwork, 6500);
+}
+
+rotation.addEventListener('click', () => {
+  paused = !paused;
+  updateRotation();
+});
+motion.addEventListener('change', updateRotation);
+document.addEventListener('visibilitychange', updateRotation);
+updateRotation();
+
+sheet.querySelector('a[href="#fan-art"]').addEventListener('click', () => sheet.close());
