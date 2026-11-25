@@ -80,3 +80,26 @@ document.addEventListener('visibilitychange', updateRotation);
 updateRotation();
 
 sheet.querySelector('a[href="#fan-art"]').addEventListener('click', () => sheet.close());
+
+const gallery = document.getElementById('fanArtTrack');
+const galleryControls = document.querySelector('.gallery-controls');
+const [previousArt, nextArt] = galleryControls.querySelectorAll('button');
+
+function updateGalleryControls() {
+  previousArt.disabled = gallery.scrollLeft <= 1;
+  nextArt.disabled = gallery.scrollLeft >= gallery.scrollWidth - gallery.clientWidth - 1;
+}
+
+function scrollGallery(direction) {
+  const [first, second] = gallery.children;
+  const step = second.offsetLeft - first.offsetLeft;
+  const currentIndex = Math.round(gallery.scrollLeft / step);
+  gallery.scrollTo({ left: (currentIndex + direction) * step, behavior: motion.matches ? 'auto' : 'smooth' });
+}
+
+previousArt.addEventListener('click', () => scrollGallery(-1));
+nextArt.addEventListener('click', () => scrollGallery(1));
+gallery.addEventListener('scroll', updateGalleryControls, { passive: true });
+new ResizeObserver(updateGalleryControls).observe(gallery);
+galleryControls.hidden = false;
+updateGalleryControls();
