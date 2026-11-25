@@ -111,3 +111,17 @@ body:has(.link-sheet[open]) { overflow: hidden; }
   .fan-art-track { grid-auto-columns: 86%; }
   .fan-art-track img { height: clamp(260px, 100vw, 420px); }
 }
+
+.work-grid .voice-work { grid-column: 1 / -1; min-height: 0; }
+.voice-work h3 { margin-top: 12px; }
+.voice-work p { font-size: 14px; margin: 0 0 12px; }
+.voice-work-links { display: flex; flex-wrap: wrap; gap: 0 24px; }
+.voice-work-links a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: #efce76;
+  font-size: 14px;
+  text-decoration: underline;
+  text-underline-offset: .25em;
+}
