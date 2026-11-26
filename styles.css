@@ -146,3 +146,23 @@ body:has(.link-sheet[open]) { overflow: hidden; }
   .works-year > h3 { grid-row: auto; }
   .works-history > li { grid-template-columns: 58px minmax(0, 1fr); gap: 8px; }
 }
+
+.about-actions { display: flex; flex-wrap: wrap; gap: 4px 20px; margin-top: 16px; }
+.about-actions a { color: var(--wine); text-decoration: underline; text-underline-offset: .25em; padding-block: 10px; }
+.works-contact { position: relative; z-index: 1; margin-top: 32px; }
+.support-layout, .support-extras { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px 40px; margin-top: 34px; }
+.support-layout h3 { margin: 0; color: var(--wine); font-size: 18px; }
+.support-layout .link-grid { grid-template-columns: minmax(0, 1fr); margin-top: 12px; }
+.support-layout .link-grid small { font-size: 12px; letter-spacing: 0; }
+.support-extras { grid-template-columns: minmax(0, 1fr) auto; align-items: start; padding-top: 28px; border-top: 1px solid var(--line); }
+.support-extras details { line-height: 1.75; }
+.support-extras summary { font-weight: 700; cursor: pointer; }
+.support-extras address { font-style: normal; padding: 14px 16px; background: #fff; border-left: 3px solid var(--mauve); }
+.support-extras p { font-size: 14px; }
+.support-extras a { color: var(--wine); text-decoration: underline; }
+.support-extras figure { margin: 0; text-align: center; }
+.support-extras figcaption { font-size: 13px; margin-top: 8px; }
+@media (max-width: 680px) {
+  .support-layout, .support-extras { grid-template-columns: minmax(0, 1fr); }
+  .support-extras figure { justify-self: start; }
+}
