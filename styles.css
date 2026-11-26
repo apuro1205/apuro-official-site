@@ -80,6 +80,18 @@ body:has(.link-sheet[open]) { overflow: hidden; }
 .teaser { background: #f9eef3; }
 .teaser .video-frame { max-width: 800px; }
 .teaser .btn { margin-top: 18px; }
+.video-preview { display: grid; place-items: center; position: relative; }
+.video-preview img { position: absolute; width: 100%; height: 100%; object-fit: cover; }
+.video-preview span {
+  position: relative;
+  padding: 10px 16px;
+  border-radius: 999px;
+  background: var(--ink);
+  color: white;
+  font-size: 13px;
+  font-weight: 700;
+}
+.original-music a.video-preview { display: grid; margin-top: 0; text-decoration: none; }
 .original-music {
   max-width: 800px;
   margin-top: clamp(36px, 6vw, 64px);
