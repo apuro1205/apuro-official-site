@@ -79,7 +79,7 @@ motion.addEventListener('change', updateRotation);
 document.addEventListener('visibilitychange', updateRotation);
 updateRotation();
 
-sheet.querySelector('a[href="#fan-art"]').addEventListener('click', () => sheet.close());
+sheet.querySelectorAll('a[href^="#"]').forEach(link => { link.addEventListener('click', () => sheet.close()); });
 
 const gallery = document.getElementById('fanArtTrack');
 const galleryControls = document.querySelector('.gallery-controls');

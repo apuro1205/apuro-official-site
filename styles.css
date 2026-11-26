@@ -112,9 +112,6 @@ body:has(.link-sheet[open]) { overflow: hidden; }
   .fan-art-track img { height: clamp(260px, 100vw, 420px); }
 }
 
-.work-grid .voice-work { grid-column: 1 / -1; min-height: 0; }
-.voice-work h3 { margin-top: 12px; }
-.voice-work p { font-size: 14px; margin: 0 0 12px; }
 .voice-work-links { display: flex; flex-wrap: wrap; gap: 0 24px; }
 .voice-work-links a {
   display: inline-flex;
@@ -124,4 +121,28 @@ body:has(.link-sheet[open]) { overflow: hidden; }
   font-size: 14px;
   text-decoration: underline;
   text-underline-offset: .25em;
+}
+
+.works-header, .works-years, .works-year { position: relative; z-index: 1; }
+.works-header { display: flex; align-items: end; justify-content: space-between; flex-wrap: wrap; gap: 16px 24px; }
+.works-header h2 { margin: 0; font-size: clamp(31px, 5vw, 66px); line-height: 1.2; }
+.works-header .kicker { color: #ebc8d4; }
+.works-inquiry, .works-years a { display: inline-flex; align-items: center; min-height: 44px; }
+.works-inquiry, .works-year a { color: #efce76; text-decoration: underline; text-underline-offset: .24em; }
+.works-years { display: flex; gap: 24px; margin: 24px 0 44px; border-bottom: 1px solid #ffffff30; }
+.works-year { display: grid; grid-template-columns: minmax(105px, .22fr) minmax(0, 1fr); gap: 18px 36px; margin-top: 44px; align-items: start; }
+.works-year > h3 { grid-row: 1 / span 2; margin: 0; color: #efce76; font: 700 clamp(32px, 4vw, 54px) 'Playfair Display', serif; }
+.works-feature { background: #452f3c; border-left: 3px solid #efce76; padding: clamp(18px, 3vw, 32px); }
+.works-year h4 { font-size: clamp(17px, 2vw, 22px); line-height: 1.5; margin: 6px 0; }
+.works-year p { color: #eadce4; font-size: 14px; line-height: 1.75; margin: 0 0 4px; }
+.work-meta { display: flex; flex-wrap: wrap; gap: 8px 18px; }
+.work-meta, .works-history span { color: #f1c9dc; font-size: 13px; }
+.works-history { list-style: none; padding: 0; margin: 0; }
+.works-history > li { display: grid; grid-template-columns: 72px minmax(0, 1fr); gap: 12px; padding: 18px 0; border-bottom: 1px solid #ffffff30; }
+.works-history time { color: #efce76; font-size: 14px; }
+.works-history a { display: inline-block; font-size: 14px; padding: 6px 0; }
+@media (max-width: 650px) {
+  .works-year { grid-template-columns: minmax(0, 1fr); }
+  .works-year > h3 { grid-row: auto; }
+  .works-history > li { grid-template-columns: 58px minmax(0, 1fr); gap: 8px; }
 }
