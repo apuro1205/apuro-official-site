@@ -22,7 +22,7 @@ const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
 const slides = [...art.querySelectorAll('img')];
 const artwork = [
   { src: slides[0].getAttribute('src'), alt: slides[0].alt },
-  { src: './assets/birthday-dress.png', alt: '青いドレスでグラスを掲げる愛神アプロ' },
+  { src: './assets/hero-wink.png', alt: '白と金の衣装でウィンクする愛神アプロ' },
   { src: './assets/birthday-dress-smile.png', alt: '青いドレスで微笑む愛神アプロ' },
   { src: './assets/center-part.png', alt: 'センターパートの愛神アプロの立ち絵' },
 ];
