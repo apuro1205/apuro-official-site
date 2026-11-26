@@ -80,6 +80,19 @@ body:has(.link-sheet[open]) { overflow: hidden; }
 .teaser { background: #f9eef3; }
 .teaser .video-frame { max-width: 800px; }
 .teaser .btn { margin-top: 18px; }
+.original-music {
+  max-width: 800px;
+  margin-top: clamp(36px, 6vw, 64px);
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+}
+.original-music h3 { margin: 0 0 20px; font-size: clamp(24px, 3vw, 34px); }
+.original-music-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+.original-music h4 { margin: 0 0 12px; font-size: 16px; }
+.original-music a { display: inline-block; margin-top: 10px; color: var(--wine); text-decoration: underline; }
+@media (max-width: 580px) {
+  .original-music-grid { grid-template-columns: 1fr; }
+}
 .profile-data { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px 18px; margin: 24px 0; }
 .profile-data div { border-top: 1px solid var(--line); padding-top: 8px; }
 .profile-data dt { color: var(--wine); font-size: 12px; }
